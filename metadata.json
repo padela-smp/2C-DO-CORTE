@@ -1,0 +1,6 @@
+{
+  "name": "Barbearia 2c do corte",
+  "description": "Site oficial da Barbearia 2c do corte em Maricá - RJ. Agendamento rápido via WhatsApp, serviços, galeria de cortes, avaliações Google 5 estrelas e localização.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
