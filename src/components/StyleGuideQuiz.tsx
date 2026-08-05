@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Sparkles, Check, ArrowRight, RefreshCw, MessageSquare } from 'lucide-react';
 import { buildWhatsAppLink } from '../data/barberData';
+import fadeBeardImg from '../assets/images/fade_beard_cut_1785963316984.jpg';
+import nevouStyleImg from '../assets/images/nevou_style_cut_1785963327416.jpg';
 
 interface StyleRecommendation {
   title: string;
@@ -22,7 +24,7 @@ export const StyleGuideQuiz: React.FC = () => {
       description: 'Ideal para destacar os contornos do rosto. A transição navalhada garante um acabamento afiado e muito estiloso.',
       services: ['Corte com Navalha / Degradê'],
       recommendedCategory: 'Fade Navalhado',
-      image: '/src/assets/images/fade_beard_cut_1785963316984.jpg'
+      image: fadeBeardImg
     },
     'nevou-platinado': {
       title: 'Nevou Platinado + Fade Lateral',
@@ -30,7 +32,7 @@ export const StyleGuideQuiz: React.FC = () => {
       description: 'Platinado impecável que chama atenção onde passa, acompanhado de lateral degradê de alta definição.',
       services: ['Nevou / Platinado', 'Corte com Navalha / Degradê'],
       recommendedCategory: 'Nevou & Degradê',
-      image: '/src/assets/images/nevou_style_cut_1785963327416.jpg'
+      image: nevouStyleImg
     },
     'combo-barba': {
       title: 'Combo Completo: Corte Degradê + Barba Modelada',

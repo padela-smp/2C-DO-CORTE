@@ -1,9 +1,13 @@
 import { ServiceItem, GalleryItem, ReviewItem } from '../types';
+import barberLogo from '../assets/images/barber_logo_1785964702110.jpg';
+import heroBarbershopImg from '../assets/images/hero_barbershop_1785963306038.jpg';
+import fadeBeardImg from '../assets/images/fade_beard_cut_1785963316984.jpg';
+import nevouStyleImg from '../assets/images/nevou_style_cut_1785963327416.jpg';
 
 export const BARBERSHOP_INFO = {
   name: "Barbearia 2c do corte",
   brandName: "Borcelle Barbearia",
-  logoUrl: "/src/assets/images/barber_logo_1785964702110.jpg",
+  logoUrl: barberLogo,
   tagline: "Estilo, Precisão e Elegância em Maricá",
   address: "Estr. Zilto Monteiro de Abreu - Caju, Maricá - RJ, 24918-100",
   shortAddress: "Caju, Maricá - RJ",
@@ -89,14 +93,14 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: '1',
     title: 'Degradê Navalhado Perfeito',
     category: 'fade',
-    imageUrl: '/src/assets/images/fade_beard_cut_1785963316984.jpg',
+    imageUrl: fadeBeardImg,
     description: 'Transição suave com acabamento na navalha e barba bem alinhada.'
   },
   {
     id: '2',
     title: 'Estilo Nevou Platinado',
     category: 'nevou',
-    imageUrl: '/src/assets/images/nevou_style_cut_1785963327416.jpg',
+    imageUrl: nevouStyleImg,
     description: 'Platinado brilhante e uniforme com corte de alta precisão nas laterais.'
   },
   {
@@ -124,7 +128,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: '6',
     title: 'Ambiente Elegante 2c do Corte',
     category: 'alinhamento',
-    imageUrl: '/src/assets/images/hero_barbershop_1785963306038.jpg',
+    imageUrl: heroBarbershopImg,
     description: 'Estrutura preparada para proporcionar conforto e o melhor atendimento.'
   }
 ];

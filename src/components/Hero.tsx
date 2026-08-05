@@ -2,6 +2,8 @@ import React from 'react';
 import { BARBERSHOP_INFO, buildWhatsAppLink } from '../data/barberData';
 import { Star, MapPin, Phone, MessageSquare, ChevronDown, CheckCircle2, Clock, Navigation } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
+import heroBgImg from '../assets/images/hero_barbershop_1785963306038.jpg';
+import fadeBeardImg from '../assets/images/fade_beard_cut_1785963316984.jpg';
 
 interface HeroProps {
   onOpenBooking: (serviceId?: string) => void;
@@ -13,7 +15,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity">
         <img
-          src="/src/assets/images/hero_barbershop_1785963306038.jpg"
+          src={heroBgImg}
           alt="Barbearia 2c do corte interior"
           className="w-full h-full object-cover object-center filter grayscale contrast-125"
           referrerPolicy="no-referrer"
@@ -163,7 +165,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-sm rounded-sm overflow-hidden border border-white/10 shadow-2xl bg-black group">
               <img
-                src="/src/assets/images/fade_beard_cut_1785963316984.jpg"
+                src={fadeBeardImg}
                 alt="Corte Degradê na Barbearia 2c do corte"
                 className="w-full h-[400px] object-cover object-top filter grayscale contrast-110 group-hover:scale-105 transition-transform duration-700"
                 referrerPolicy="no-referrer"
