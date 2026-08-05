@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BARBERSHOP_INFO, buildWhatsAppLink } from '../data/barberData';
 import { MapPin, Phone, Star, Clock, Copy, Check, ExternalLink, Navigation } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 export const QuickInfoBar: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -55,21 +56,28 @@ export const QuickInfoBar: React.FC = () => {
         </div>
 
         {/* Item 2: Phone & WhatsApp */}
-        <div className="bg-white/[0.02] p-4 rounded-sm border border-white/10 flex items-start gap-3">
-          <div className="p-2 bg-white/5 rounded-sm text-neutral-300 shrink-0 mt-0.5 border border-white/10">
-            <Phone className="w-4 h-4" />
+        <div className="bg-white/[0.03] p-4 rounded-sm border border-emerald-500/30 flex items-start gap-3 shadow-md">
+          <div className="p-2.5 bg-emerald-500/20 rounded-sm text-emerald-400 shrink-0 mt-0.5 border border-emerald-500/30">
+            <WhatsAppIcon className="w-5 h-5 text-emerald-400 fill-emerald-400" />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Contato Direto</div>
-            <div className="text-xs font-semibold text-white mt-0.5 font-mono">{BARBERSHOP_INFO.phoneDisplay}</div>
+            <div className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest font-bold">WhatsApp / Telefone</div>
+            <a
+              href={buildWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-bold text-white hover:text-emerald-400 transition-colors mt-0.5 font-mono block"
+            >
+              {BARBERSHOP_INFO.phoneDisplay}
+            </a>
             <div className="mt-2 flex items-center gap-2">
               <a
                 href={buildWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[11px] text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1 uppercase font-mono tracking-wider"
+                className="text-[11px] text-emerald-400 hover:text-emerald-300 font-bold flex items-center gap-1 uppercase font-mono tracking-wider bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20"
               >
-                <span>WhatsApp Rápido</span>
+                <span>Chamar no WhatsApp</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BARBERSHOP_INFO, buildWhatsAppLink } from '../data/barberData';
 import { Scissors, Star, MapPin, Phone, Menu, X, Calendar, MessageSquare } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface HeaderProps {
   onOpenBooking: (serviceId?: string) => void;
@@ -12,7 +13,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
   return (
     <header className="sticky top-0 z-40 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/10 text-[#F5F5F5] transition-all">
       {/* Top Banner Bar */}
-      <div className="bg-black/60 border-b border-white/5 py-2 px-4 text-[11px] text-neutral-400 font-mono tracking-wider uppercase">
+      <div className="bg-black/80 border-b border-white/5 py-2 px-4 text-[11px] text-neutral-400 font-mono tracking-wider uppercase">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-4 flex-wrap">
             <a 
@@ -25,12 +26,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
               <span className="truncate">{BARBERSHOP_INFO.shortAddress}</span>
             </a>
             <span className="hidden sm:inline text-neutral-700">•</span>
+            {/* Prominent WhatsApp / Phone Link in Top Bar */}
             <a 
-              href={`tel:${BARBERSHOP_INFO.phoneClean}`}
-              className="flex items-center gap-1.5 hover:text-white transition-colors"
+              href={buildWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-emerald-400 font-bold hover:text-emerald-300 transition-colors bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20"
             >
-              <Phone className="w-3.5 h-3.5 text-neutral-500" />
-              <span>{BARBERSHOP_INFO.phoneDisplay}</span>
+              <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400" />
+              <span className="text-xs font-mono">{BARBERSHOP_INFO.phoneDisplay}</span>
             </a>
           </div>
 
@@ -54,24 +58,30 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
       </div>
 
       {/* Main Navigation */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+        {/* Logo with attached brand logo image */}
         <a href="#" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-sm bg-neutral-900 border border-white/10 flex items-center justify-center text-white shadow-inner group-hover:border-white/30 transition-colors">
-            <Scissors className="w-5 h-5 text-neutral-200 group-hover:rotate-12 transition-transform duration-300" />
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden bg-black border border-amber-400/30 shadow-md group-hover:border-amber-400/80 transition-colors shrink-0">
+            <img 
+              src={BARBERSHOP_INFO.logoUrl} 
+              alt={BARBERSHOP_INFO.brandName} 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              referrerPolicy="no-referrer"
+            />
           </div>
           <div>
-            <div className="font-serif text-xl tracking-widest text-white uppercase font-bold leading-none">
-              2C <span className="font-serif italic font-normal text-neutral-400">DO CORTE</span>
+            <div className="font-serif text-lg sm:text-xl tracking-wider text-white uppercase font-bold leading-tight flex items-center gap-2">
+              <span>BORCELLE</span>
+              <span className="text-xs font-mono font-normal text-amber-400 bg-amber-400/10 border border-amber-400/20 px-1.5 py-0.5 rounded">2C</span>
             </div>
-            <div className="text-[9px] text-neutral-500 tracking-[0.25em] uppercase font-mono mt-1">
-              BARBEARIA • MARICÁ-RJ
+            <div className="text-[10px] sm:text-[11px] text-neutral-400 tracking-[0.2em] uppercase font-serif italic">
+              Barbearia 2c do corte
             </div>
           </div>
         </a>
 
         {/* Desktop Links */}
-        <nav className="hidden md:flex items-center gap-8 text-[11px] font-semibold uppercase tracking-widest text-neutral-400">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[11px] font-semibold uppercase tracking-widest text-neutral-400">
           <a href="#servicos" className="hover:text-white transition-colors py-1 hover:border-b hover:border-white">Serviços</a>
           <a href="#trabalhos" className="hover:text-white transition-colors py-1 hover:border-b hover:border-white">Trabalhos</a>
           <a href="#avaliacoes" className="hover:text-white transition-colors py-1 flex items-center gap-1.5 hover:border-b hover:border-white">
@@ -81,24 +91,28 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
           <a href="#guia-estilo" className="hover:text-white transition-colors py-1 hover:border-b hover:border-white">Guia de Estilo</a>
         </nav>
 
-        {/* Action Buttons */}
+        {/* Action Buttons: Prominent WhatsApp Phone Badge + Booking */}
         <div className="hidden md:flex items-center gap-3">
+          {/* Highly Visible WhatsApp Phone Button */}
           <a
-            href={BARBERSHOP_INFO.googleMapsUrl}
+            href={buildWhatsAppLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3.5 py-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-sm transition-colors flex items-center gap-1.5"
+            className="px-3.5 py-2 text-xs sm:text-sm font-bold font-mono text-emerald-400 bg-emerald-950/60 hover:bg-emerald-900/80 border border-emerald-500/40 rounded-sm transition-all shadow-md flex items-center gap-2 group"
+            title="Chamar no WhatsApp"
           >
-            <MapPin className="w-3.5 h-3.5" />
-            Como Chegar
+            <div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <WhatsAppIcon className="w-4 h-4 text-emerald-400 fill-emerald-400" />
+            </div>
+            <span className="text-sm font-bold tracking-tight text-emerald-300">{BARBERSHOP_INFO.phoneDisplay}</span>
           </a>
           
           <button
             onClick={() => onOpenBooking()}
-            className="px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.15em] text-neutral-950 bg-white hover:bg-neutral-200 active:bg-neutral-300 rounded-sm transition-all shadow-md flex items-center gap-2 cursor-pointer"
+            className="px-4 sm:px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.15em] text-neutral-950 bg-white hover:bg-neutral-200 active:bg-neutral-300 rounded-sm transition-all shadow-md flex items-center gap-2 cursor-pointer shrink-0"
           >
             <Calendar className="w-3.5 h-3.5" />
-            Agendar Horário
+            Agendar
           </button>
         </div>
 

@@ -2,6 +2,8 @@ import { ServiceItem, GalleryItem, ReviewItem } from '../types';
 
 export const BARBERSHOP_INFO = {
   name: "Barbearia 2c do corte",
+  brandName: "Borcelle Barbearia",
+  logoUrl: "/src/assets/images/barber_logo_1785964702110.jpg",
   tagline: "Estilo, Precisão e Elegância em Maricá",
   address: "Estr. Zilto Monteiro de Abreu - Caju, Maricá - RJ, 24918-100",
   shortAddress: "Caju, Maricá - RJ",

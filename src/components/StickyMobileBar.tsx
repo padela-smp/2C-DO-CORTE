@@ -1,6 +1,7 @@
 import React from 'react';
 import { BARBERSHOP_INFO, buildWhatsAppLink } from '../data/barberData';
-import { MessageSquare, Phone, Calendar } from 'lucide-react';
+import { Phone } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface StickyMobileBarProps {
   onOpenBooking: () => void;
@@ -21,13 +22,13 @@ export const StickyMobileBar: React.FC<StickyMobileBarProps> = ({ onOpenBooking 
           <Phone className="w-5 h-5 text-neutral-300" />
         </a>
 
-        {/* Main WhatsApp Booking Button */}
+        {/* Main WhatsApp Booking Button with Phone Number */}
         <button
           onClick={onOpenBooking}
-          className="flex-1 py-3 px-4 bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-neutral-950 font-bold text-xs uppercase tracking-widest rounded-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50 active:scale-[0.98] transition-all cursor-pointer"
+          className="flex-1 py-3 px-3 bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-neutral-950 font-bold text-xs uppercase tracking-wider rounded-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50 active:scale-[0.98] transition-all cursor-pointer"
         >
-          <MessageSquare className="w-4 h-4 fill-neutral-950 shrink-0" />
-          <span>Agendar no WhatsApp</span>
+          <WhatsAppIcon className="w-4 h-4 fill-neutral-950 text-neutral-950 shrink-0" />
+          <span className="font-mono text-xs font-bold">Agendar: {BARBERSHOP_INFO.phoneDisplay}</span>
         </button>
 
       </div>

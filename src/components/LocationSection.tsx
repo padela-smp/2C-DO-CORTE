@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BARBERSHOP_INFO, buildWhatsAppLink } from '../data/barberData';
 import { MapPin, Phone, Clock, Copy, Check, Navigation, Star, MessageSquare, ExternalLink, Compass } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 export const LocationSection: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -17,9 +18,14 @@ export const LocationSection: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-white/5 border border-white/10 text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
-            <Compass className="w-3.5 h-3.5 text-neutral-300" />
-            Localização & Atendimento
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-amber-400/30 text-[10px] font-mono text-amber-300 uppercase tracking-widest">
+            <img 
+              src={BARBERSHOP_INFO.logoUrl} 
+              alt="Logo" 
+              className="w-4 h-4 rounded-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+            Borcelle Barbearia • Localização
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif uppercase tracking-widest text-white leading-tight">
             ONDE ESTAMOS <span className="font-serif italic font-normal text-neutral-400">EM MARICÁ</span>
@@ -72,34 +78,34 @@ export const LocationSection: React.FC = () => {
 
               {/* Phone & WhatsApp Highlight */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-4 bg-white/5 rounded-sm border border-white/10 space-y-1">
-                  <div className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
-                    <Phone className="w-3.5 h-3.5 text-neutral-300" />
-                    Telefone
-                  </div>
-                  <a
-                    href={`tel:${BARBERSHOP_INFO.phoneClean}`}
-                    className="text-base font-bold font-mono text-white hover:underline block pt-1"
-                  >
-                    {BARBERSHOP_INFO.phoneDisplay}
-                  </a>
-                  <span className="text-[10px] text-neutral-500 font-mono">Clique para ligar</span>
-                </div>
-
-                <div className="p-4 bg-white/5 rounded-sm border border-white/10 space-y-1">
-                  <div className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
-                    <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-                    WhatsApp
+                <div className="p-4 bg-emerald-950/40 rounded-sm border border-emerald-500/40 space-y-1 shadow-md">
+                  <div className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest font-bold flex items-center gap-1.5">
+                    <WhatsAppIcon className="w-4 h-4 text-emerald-400 fill-emerald-400" />
+                    WhatsApp Direct
                   </div>
                   <a
                     href={buildWhatsAppLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-base font-bold font-mono text-emerald-400 hover:underline block pt-1"
+                    className="text-lg font-bold font-mono text-white hover:text-emerald-300 transition-colors block pt-1"
                   >
                     {BARBERSHOP_INFO.phoneDisplay}
                   </a>
-                  <span className="text-[10px] text-neutral-500 font-mono">Agendamento direto</span>
+                  <span className="text-[10px] text-emerald-400/80 font-mono">Clique para agendar via WhatsApp</span>
+                </div>
+
+                <div className="p-4 bg-white/5 rounded-sm border border-white/10 space-y-1">
+                  <div className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
+                    <Phone className="w-3.5 h-3.5 text-neutral-300" />
+                    Ligação Telefônica
+                  </div>
+                  <a
+                    href={`tel:${BARBERSHOP_INFO.phoneClean}`}
+                    className="text-lg font-bold font-mono text-white hover:underline block pt-1"
+                  >
+                    {BARBERSHOP_INFO.phoneDisplay}
+                  </a>
+                  <span className="text-[10px] text-neutral-500 font-mono">Chamar via telefone</span>
                 </div>
               </div>
 

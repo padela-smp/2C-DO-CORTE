@@ -1,6 +1,7 @@
 import React from 'react';
 import { BARBERSHOP_INFO, buildWhatsAppLink } from '../data/barberData';
 import { Star, MapPin, Phone, MessageSquare, ChevronDown, CheckCircle2, Clock, Navigation } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface HeroProps {
   onOpenBooking: (serviceId?: string) => void;
@@ -36,27 +37,30 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
           {/* Main Copy */}
           <div className="lg:col-span-7 space-y-6 text-left">
             
-            {/* Rating & Location Tag */}
-            <div className="inline-flex flex-wrap items-center gap-2 bg-white/[0.03] border border-white/10 rounded-sm p-1.5 pr-4 text-[11px] font-mono tracking-wider uppercase backdrop-blur-sm">
-              <a 
-                href={BARBERSHOP_INFO.googleReviewsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 bg-amber-400/10 text-amber-300 border border-amber-400/20 px-2.5 py-1 rounded-sm hover:bg-amber-400/20 transition-colors"
-              >
-                <div className="flex text-amber-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 fill-amber-400" />
-                  ))}
-                </div>
-                <span className="font-bold text-white">5.0</span>
-                <span className="text-amber-300 text-[10px] underline">({BARBERSHOP_INFO.googleReviewCount} avaliações)</span>
-              </a>
-              <span className="text-neutral-600 hidden sm:inline">•</span>
-              <span className="text-neutral-400 flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-neutral-500" />
-                Caju, Maricá - RJ
-              </span>
+            {/* Rating & Brand Badge */}
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <div className="inline-flex items-center gap-2 bg-black/80 border border-amber-400/30 rounded-full py-1 px-3.5 text-xs text-amber-300 shadow-md">
+                <img 
+                  src={BARBERSHOP_INFO.logoUrl} 
+                  alt="Logo" 
+                  className="w-5 h-5 rounded-full object-cover border border-amber-400/40"
+                  referrerPolicy="no-referrer"
+                />
+                <span className="font-serif font-bold uppercase tracking-wider text-white">BORCELLE BARBEARIA</span>
+              </div>
+
+              <div className="inline-flex items-center gap-2 bg-white/[0.03] border border-white/10 rounded-full px-3 py-1 text-[11px] font-mono tracking-wider uppercase backdrop-blur-sm">
+                <a 
+                  href={BARBERSHOP_INFO.googleReviewsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-amber-400 hover:underline"
+                >
+                  <Star className="w-3.5 h-3.5 fill-amber-400" />
+                  <span className="font-bold text-white">5.0</span>
+                  <span className="text-neutral-400 text-[10px]">({BARBERSHOP_INFO.googleReviewCount} avaliações)</span>
+                </a>
+              </div>
             </div>
 
             {/* Title */}
@@ -72,22 +76,44 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
               </p>
             </div>
 
-            {/* Quick Contact Specs Card */}
-            <div className="p-4 bg-white/[0.02] border border-white/10 rounded-sm space-y-3 text-xs sm:text-sm text-neutral-300 max-w-lg backdrop-blur-md">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-neutral-400 mt-0.5 shrink-0" />
-                <div>
-                  <div className="font-semibold text-white text-xs uppercase tracking-wider">Endereço Visível:</div>
-                  <div className="text-neutral-400 text-xs mt-0.5">{BARBERSHOP_INFO.address}</div>
-                </div>
+            {/* Quick Contact & WhatsApp Highlight Card */}
+            <div className="p-4 bg-white/[0.03] border border-emerald-500/30 rounded-sm space-y-3 text-xs sm:text-sm text-neutral-300 max-w-lg backdrop-blur-md shadow-lg">
+              <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-white/10">
+                <a
+                  href={buildWhatsAppLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-emerald-400 hover:text-emerald-300 transition-colors group"
+                >
+                  <div className="p-2.5 bg-emerald-500/20 border border-emerald-500/40 rounded-sm group-hover:scale-105 transition-transform">
+                    <WhatsAppIcon className="w-5 h-5 text-emerald-400 fill-emerald-400" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest font-bold">
+                      WHATSAPP & CONTATO DIRETO
+                    </div>
+                    <div className="text-base sm:text-lg font-bold font-mono text-white tracking-tight">
+                      {BARBERSHOP_INFO.phoneDisplay}
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href={buildWhatsAppLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden sm:inline-flex px-3 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-neutral-950 font-bold text-xs uppercase tracking-wider rounded-sm transition-colors shrink-0"
+                >
+                  Chamar no Whats
+                </a>
               </div>
-              
-              <div className="pt-2.5 border-t border-white/5 flex flex-wrap items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-neutral-400" />
-                  <span className="font-medium text-white font-mono text-xs">{BARBERSHOP_INFO.phoneDisplay}</span>
+
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs text-neutral-300">
+                <div className="flex items-center gap-1.5 text-neutral-400">
+                  <MapPin className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
+                  <span className="truncate">{BARBERSHOP_INFO.address}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-mono">
+                <div className="flex items-center gap-1.5 text-emerald-400 font-mono text-[11px]">
                   <Clock className="w-3.5 h-3.5" />
                   <span>Seg a Sáb: 09h às 19h</span>
                 </div>

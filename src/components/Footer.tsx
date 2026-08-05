@@ -1,6 +1,7 @@
 import React from 'react';
 import { BARBERSHOP_INFO, buildWhatsAppLink } from '../data/barberData';
 import { Scissors, MapPin, Phone, Star, MessageSquare, Heart, ExternalLink } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 export const Footer: React.FC = () => {
   return (
@@ -12,14 +13,20 @@ export const Footer: React.FC = () => {
           {/* Col 1: Brand Info */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center text-white">
-                <Scissors className="w-4 h-4 text-neutral-300" />
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-black border border-amber-400/30 shrink-0">
+                <img 
+                  src={BARBERSHOP_INFO.logoUrl} 
+                  alt={BARBERSHOP_INFO.brandName} 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div>
-                <div className="font-serif font-bold text-lg text-white uppercase tracking-widest">
-                  2C <span className="text-neutral-500 font-serif font-normal">DO CORTE</span>
+                <div className="font-serif font-bold text-lg text-white uppercase tracking-wider flex items-center gap-2">
+                  <span>BORCELLE</span>
+                  <span className="text-xs font-mono font-normal text-amber-400 bg-amber-400/10 border border-amber-400/20 px-1.5 py-0.5 rounded">2C</span>
                 </div>
-                <div className="text-[9px] font-mono text-neutral-500 uppercase tracking-widest">BARBEARIA EM MARICÁ-RJ</div>
+                <div className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest">BARBEARIA 2C DO CORTE • MARICÁ-RJ</div>
               </div>
             </div>
 
@@ -46,7 +53,7 @@ export const Footer: React.FC = () => {
               CONTATO & ENDEREÇO
             </div>
             
-            <div className="space-y-2 text-xs text-neutral-300">
+            <div className="space-y-3 text-xs text-neutral-300">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-neutral-400 shrink-0 mt-0.5" />
                 <div>
@@ -55,22 +62,24 @@ export const Footer: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-neutral-400 shrink-0" />
-                <a href={`tel:${BARBERSHOP_INFO.phoneClean}`} className="hover:text-white font-mono font-semibold">
-                  {BARBERSHOP_INFO.phoneDisplay}
-                </a>
-              </div>
-
-              <div className="flex items-center gap-2 pt-1">
-                <MessageSquare className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a
+              {/* Prominent WhatsApp Phone row */}
+              <div className="p-2.5 bg-emerald-950/40 border border-emerald-500/30 rounded-sm inline-block">
+                <a 
                   href={buildWhatsAppLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-emerald-400 hover:underline font-semibold"
+                  className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-mono font-bold text-sm"
                 >
-                  Agendamento via WhatsApp
+                  <WhatsAppIcon className="w-4 h-4 text-emerald-400 fill-emerald-400" />
+                  <span>{BARBERSHOP_INFO.phoneDisplay}</span>
+                  <span className="text-[9px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded uppercase font-semibold">Whats</span>
+                </a>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-neutral-400 shrink-0" />
+                <a href={`tel:${BARBERSHOP_INFO.phoneClean}`} className="hover:text-white font-mono font-semibold">
+                  {BARBERSHOP_INFO.phoneDisplay} (Ligação)
                 </a>
               </div>
             </div>
